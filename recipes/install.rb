@@ -17,9 +17,8 @@ bash 'rvm install' do
     curl -sSL https://get.rvm.io -o rvm.sh
     cat rvm.sh | bash -s stable
     source /etc/profile.d/rvm.sh
-    #rvm pkg install openssl
-    #rvm reinstall ruby 2.7.6 --with-openssl-dir=/usr/local/rvm/usr/
-    rvm install ruby-2.7.6
+    rvm pkg install openssl
+    rvm install ruby-2.7.6 --with-openssl-dir=/usr/local/rvm/usr
   EOF
 end
 
