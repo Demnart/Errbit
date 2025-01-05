@@ -1,16 +1,30 @@
 ---
 driver:
-  name: vagrant
+  name: dokken
+  privileged: true  # allows systemd services to start
+  chef_version: 17 # There is libcrypto.so.2 error when using latest version
 
 provisioner:
-  name: chef_solo
+  name: dokken
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
 
 platforms:
   - name: ubuntu-20.04
-  - name: centos-8
-
+    driver:
+      image: dokken/ubuntu-20.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+  
 suites:
-  - name: default
+  - name: server
     run_list:
       - recipe[errbit::default]
-    attributes:
+    verifier:
+      inspec_tests:
+        - test/integration/default
