@@ -31,3 +31,12 @@ bash 'install dependencies' do
   source /etc/profile.d/rvm.sh && gem install mini_racer --version 0.6.3 --platform x86_64-linux
   EOF
 end
+
+bash 'errbit install' do
+  cwd '/errbit'
+  code <<-EOF
+  source /etc/profile.d/rvm.sh && bundle install
+  source /etc/profile.d/rvm.sh && bundle exec rake errbit:bootstrap
+  source /etc/profile.d/rvm.sh && bundle exec rails server -d
+  EOF
+end
