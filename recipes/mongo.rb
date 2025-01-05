@@ -4,3 +4,11 @@ apt_repository 'mongodb' do
   components   ['multiverse']
   key 'https://www.mongodb.org/static/pgp/server-8.0.asc'
 end
+
+apt_package 'mongodb-org' do
+  action :install
+end
+
+systemd_unit 'mongod' do
+  action [:start, :enable]
+end
