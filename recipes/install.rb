@@ -22,3 +22,12 @@ bash 'rvm install' do
     rvm install ruby-2.7.6
   EOF
 end
+
+bash 'install dependencies' do
+  code <<-EOF
+  source /etc/profile.d/rvm.sh && gem install libv8-node --version 16.10.00
+  mkdir -p /usr/local/rvm/gems/ruby-2.7.6/gems/libv8-node-16.10.0.0-x86_64-linux-musl/vendor/v8/x86_64-linux/libv8/obj/
+  cp /usr/local/rvm/gems/ruby-2.7.6/gems/libv8-node-16.10.0.0-x86_64-linux-musl/vendor/v8/x86_64-linux-musl/libv8/obj/libv8_monolith.a /usr/local/rvm/gems/ruby-2.7.6/gems/libv8-node-16.10.0.0-x86_64-linux-musl/vendor/v8/x86_64-linux/libv8/obj/
+  source /etc/profile.d/rvm.sh && gem install mini_racer --version 0.6.3 --platform x86_64-linux
+  EOF
+end
