@@ -6,5 +6,5 @@
 
 include_recipe 'errbit::mongo'
 include_recipe 'errbit::user'
-include_recipe 'errbit::install'
+include_recipe 'errbit::user_install'
 include_recipe 'errbit::unit'
