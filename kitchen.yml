@@ -3,7 +3,7 @@ driver:
   name: dokken
   privileged: true  # allows systemd services to start
   chef_version: 17 # There is libcrypto.so.2 error when using latest version
-
+  
 provisioner:
   name: dokken
 
@@ -20,27 +20,32 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-  
+      port:
+        - "3001:3000"
   - name: ubuntu-22.04
     driver:
       image: dokken/ubuntu-22.04
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-  
+      port:
+        - "3002:3000"
   - name: debian-11
     driver:
       image: dokken/debian-11
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-  
+      port:
+        - "3003:3000"
   - name: debian-12
     driver:
       image: dokken/debian-12
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
+      port:
+        - "3004:3000"
 suites:
   - name: server
     run_list:
@@ -48,3 +53,10 @@ suites:
     verifier:
       inspec_tests:
         - test/integration/default
+      inputs:
+        mongodb_service: "mongod"
+        mongodb_port: "27017"
+        errbit_service: "errbit"
+        errbit_port: "3000"
+        ruby_path: "/home/meus/.rvm/rubies/ruby-2.7.6"
+        default_user: 'meus'
