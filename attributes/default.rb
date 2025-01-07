@@ -11,7 +11,8 @@ default['errbit']['destination'] = "#{node['user']['path']}/errbit"
 default['errbit']['admin']['name'] = 'admin'
 default['errbit']['admin']['password'] = 'adminpassword'
 default['errbit']['admin']['email'] = 'your_email@example.com'
-default['errbit']['default']['port'] = '0.0.0.0:3000'
+default['errbit']['default']['port'] = '3000'
+default['errbit']['default']['address'] = '0.0.0.0'
 
 default['rvm']['bin']="#{node['user']['path']}/.rvm/bin/rvm"
 default['rvm']['openssl']['path'] = "#{node['user']['path']}/.rvm/usr/bin/openssl"
