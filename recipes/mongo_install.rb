@@ -1,3 +1,11 @@
+#
+# Cookbook:: errbit
+# Recipe:: mongo_install
+#
+# Copyright:: 2025
+# Authors:
+#     Artiom Rogov <insidia93@gmail.com>
+
 package_version_major = node['mongodb']['package_version'].to_f
 
 apt_repository 'mongodb' do

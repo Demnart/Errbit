@@ -1,3 +1,11 @@
+#
+# Cookbook:: errbit
+# Recipe:: create_user
+#
+# Copyright:: 2025
+# Authors:
+#     Artiom Rogov <insidia93@gmail.com>
+
 group node['user']['name'] do
   gid node['user']['gid']
   action :create

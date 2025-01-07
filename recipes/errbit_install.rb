@@ -1,3 +1,11 @@
+#
+# Cookbook:: errbit
+# Recipe:: errbit_install
+#
+# Copyright:: 2025
+# Authors:
+#     Artiom Rogov <insidia93@gmail.com>
+
 package 'git' do
   action :install
 end
