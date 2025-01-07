@@ -33,8 +33,8 @@ end
 
 describe user( default_user ) do
 it { should exist}
-its ( 'uid' ) { should eq 1000 }
-its ( 'gid' ) { should eq 1000 }
+its ( 'uid' ) { should eq 1005 }
+its ( 'gid' ) { should eq 1005 }
 its ( 'group' ) { should eq default_user }
 end
 
