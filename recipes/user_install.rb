@@ -98,6 +98,6 @@ bash ['bundle start rails'] do
   environment 'HOME' => node['user']['path'], 'USER' => node['user']['name']
   cwd node['errbit']['destination']
   code <<-EOF
-#{node['rvm']['wrapper']['bundle']} exec rails server -d
+#{node['rvm']['wrapper']['bundle']} exec rails server -d --binding="#{node['errbit']['default']['address']}"
 EOF
 end
