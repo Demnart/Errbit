@@ -80,7 +80,6 @@ bash ['bundle install'] do
   code <<-EOF
  #{node['rvm']['wrapper']['bundle']} install
  EOF
-#  not_if { ::File.exist?("#{node['errbit']['destination']}/Gemfile.lock") }
 end
 
 bash ['bundle bootstrap'] do
@@ -101,5 +100,4 @@ bash ['bundle start rails'] do
   code <<-EOF
 #{node['rvm']['wrapper']['bundle']} exec rails server -d
 EOF
-  not_if "lsof -i:#{node['errbit']['default']['port']} | grep LISTEN"
 end
