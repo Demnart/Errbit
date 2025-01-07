@@ -20,7 +20,7 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-      port:
+      ports:
         - "3001:3000"
   - name: ubuntu-22.04
     driver:
@@ -28,7 +28,7 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-      port:
+      ports:
         - "3002:3000"
   - name: debian-11
     driver:
@@ -36,7 +36,7 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-      port:
+      ports:
         - "3003:3000"
   - name: debian-12
     driver:
@@ -44,7 +44,7 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-      port:
+      ports:
         - "3004:3000"
 suites:
   - name: server
